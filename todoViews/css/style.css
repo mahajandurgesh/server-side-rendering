@@ -1,0 +1,102 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+header{
+    text-align: center;
+    padding: 10px;
+    background-color: #333;
+    color: #fff;
+}
+.container{
+    display: flex;
+    align-items: center;
+    height: 70vh;
+}
+.left{
+    width: 60%;
+    height: 80%;
+    border: 1px solid #333;
+    padding: 10px;
+    margin-left: 2%;
+    background-color: #eee;
+    box-shadow: 0 0 10px #333;
+}
+.left ul{
+    list-style: none;
+    height: 90%;
+    overflow: auto;
+}
+.left ul li{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #333;
+    background-color: #fff;
+}
+.left ul li .todo-content-incomplete{
+    width: 80%;
+    overflow-wrap: break-word;
+}
+
+.left ul li .todo-content-completed{
+    width: 80%;
+    text-decoration: line-through;
+    overflow-wrap: break-word;
+}
+
+.left ul li .todo-actions{
+    width: 20%;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 10px;
+}
+.right{
+    width: 40%;
+    height: 80%;
+    padding: 20px;
+    margin-right: 2%;
+    
+}
+.right #add-todo{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+.right #add-todo input[type="text"]{
+    padding: 10px;
+    margin-bottom: 10px;
+}
+.right #add-todo input[type="submit"]{
+    padding: 10px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+.delete-todo{
+    padding: 5px;
+    background-color: rgb(205, 15, 15);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+h2{
+    text-align: center;
+    margin-bottom: 10px;
+}
+#header div{
+    display: flex;
+    justify-content: space-between;
+}
+#header div button{
+    padding: 5px 10px;
+    background-color: #bd0101;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}

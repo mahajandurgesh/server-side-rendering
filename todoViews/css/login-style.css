@@ -1,0 +1,55 @@
+body {
+    background: #e1c192;
+    font-family: sans-serif;
+    font-size: 14px;
+}
+.login {
+    width: 400px;
+    background: #fff;
+    border-radius: 5px;
+    margin: 0 auto;
+    padding: 20px;
+    margin-top: 20px;
+}
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background: #2c3e50;
+    border: 0;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+}
+input[type="submit"]:hover {
+    background: #2980b9;
+    transition: .6s;
+}
+h1 {
+    text-align: center;
+    font-weight: normal;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+p {
+    text-align: center;
+    font-weight: bold;
+    font-size: 14px;
+}
+a {
+    text-decoration: none;
+    color: #2c3e50;
+}
+a:hover {
+    color: #2980b9;
+    transition: .6s;
+}
