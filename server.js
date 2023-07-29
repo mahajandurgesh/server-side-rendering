@@ -5,7 +5,8 @@ var session = require('express-session')
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
-app.set('trust proxy', 1)
+app.set('trust proxy', 1);
+app.set("view engine", "ejs");
 app.use(session({
   secret: 'secret',
   resave: false,
@@ -14,14 +15,14 @@ app.use(session({
 
 app.get('/', function(req, res) {
     if(req.session.username) {
-        res.sendFile(__dirname + '/todoViews/index.html');
+        res.render('index', {username: req.session.username});
     } else {
-        res.redirect('/login');
+        res.render('login');
     }
 });
 
 app.get('/login', function(req, res) {
-    res.sendFile(__dirname + '/todoViews/login.html');
+    res.render('login');
 });
 
 app.get('/login-style', function(req, res) {
@@ -40,10 +41,6 @@ app.get('/logout', function(req, res) {
 
 app.get('/signup', function(req, res) {
     res.sendFile(__dirname + '/todoViews/signup.html');
-});
-
-app.get('/getUsername', function(req, res) {
-    res.status(200).json({username: req.session.username});
 });
 
 app.get('/css/style.css', function(req, res) {
@@ -92,7 +89,7 @@ app.post('/login', function(req, res) {
             });
             if(!userFound)
             {
-                return res.status(401).redirect('/invalidCredentials');
+                return res.render('login', {error: 'Invalid credentials'});
             }
         }
     });
@@ -117,7 +114,7 @@ app.post('/signup', function(req, res){
                 }
             });
             if(userFound){
-                return res.status(409).redirect('/userExists');
+                return res.status(409).render('signup', {error: 'User already exists'})
             }
             else{
                 users.push({email, username, password});
@@ -126,7 +123,7 @@ app.post('/signup', function(req, res){
                         res.status(500).send('internal server error');
                     }
                     else{
-                        res.status(200).redirect('/login')
+                        res.status(200).render('login', {success: 'User created successfully'});
                     }
                 });
             }

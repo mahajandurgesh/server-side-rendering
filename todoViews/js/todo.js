@@ -7,18 +7,18 @@ var welcome = document.createElement('p');
 
 
 
-fetch('/getUsername', {
-    method: 'get'
-}).then(function(response) {
-    if(response.ok) {
-        return response.json();
-    } else {
-        throw new Error(response.message);
-    }
-}).then(function(user) {
-    welcome.innerHTML = 'Welcome '+ user.username + '!';
-    header.appendChild(welcome);
-});
+// fetch('/getUsername', {
+//     method: 'get'
+// }).then(function(response) {
+//     if(response.ok) {
+//         return response.json();
+//     } else {
+//         throw new Error(response.message);
+//     }
+// }).then(function(user) {
+//     welcome.innerHTML = 'Welcome '+ user.username + '!';
+//     header.appendChild(welcome);
+// });
 
 
 renderTodoList();
