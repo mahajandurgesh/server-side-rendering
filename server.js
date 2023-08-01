@@ -13,6 +13,11 @@ app.use(session({
   saveUninitialized: true
 }))
 
+
+app.listen(3000, function() {
+    console.log('Server running on port 3000');
+});
+
 app.get('/', function(req, res) {
     if(req.session.username) {
         readTodosFromFile(function(err, todos) {
@@ -22,6 +27,22 @@ app.get('/', function(req, res) {
                 res.render('index', {username: req.session.username, todos: todos});
             }
         });
+    } else {
+        res.render('login');
+    }
+});
+
+app.get('/contact', function(req, res) {
+    if(req.session.username) {
+        res.render('contact', {username: req.session.username});
+    } else {
+        res.render('login');
+    }
+});
+
+app.get('/about', function(req, res) {
+    if(req.session.username) {
+        res.render('about', {username: req.session.username});
     } else {
         res.render('login');
     }
@@ -40,13 +61,13 @@ app.get('/logout', function(req, res) {
         if(err) {
             res.status(500).send('Error');
         } else {
-            res.status(200).send('Success');
+            res.status(200).render('login', {success: 'Logged out successfully'});
         }
     });
 });
 
 app.get('/signup', function(req, res) {
-    res.sendFile(__dirname + '/todoViews/signup.html');
+    res.render('signup', {error: ''});
 });
 
 app.get('/css/style.css', function(req, res) {
@@ -58,6 +79,9 @@ app.get('/todo.js', function(req, res) {
 });
 
 app.get('/getTodos', function(req, res) {
+    if(!req.session.username) {
+        return res.status(401).send('Unauthorized');
+    }
     readTodosFromFile(function(err, todos) {
         if(err) {
             res.status(500).send('Error reading file');
@@ -65,14 +89,6 @@ app.get('/getTodos', function(req, res) {
             res.status(200).send(todos);
         }
     });
-});
-
-app.get('/invalidCredentials', function(req, res) {
-    res.sendFile(__dirname + '/todoViews/invalidCredentials.html');
-});
-
-app.get('/userExists', function(req, res) {
-    res.sendFile(__dirname + '/todoViews/userExists.html');
 });
 
 app.post('/login', function(req, res) {
@@ -187,11 +203,6 @@ app.post('/deleteTodo', function(req, res) {
         }
     });
 });
-
-app.listen(3000, function() {
-    console.log('Server running on port 3000');
-});
-
 
 function readTodosFromFile(callback){
     let todos = [];

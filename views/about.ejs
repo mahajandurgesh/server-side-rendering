@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>About</title>
+    <style>
+        #about {
+        text-align: center;
+        font-weight: normal;
+        font-size: 24px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        }
+        p {
+            text-align: center;
+        }
+    </style>
+</head>
+<%- include('components/header', {username: username}) %>
+<body>
+    <h1 id="about">About</h1>
+    <p>Todo App is a simple web app that allows you to add todos and delete them.</p>
+    <p>It is built using Node.js, Express.js and EJS.</p>
+    <script src="/todo.js"></script>
+</body>
+</html>

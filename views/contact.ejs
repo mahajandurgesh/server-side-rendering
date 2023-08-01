@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Contact</title>
+    <style>
+        #contact {
+            text-align: center;
+            font-weight: normal;
+            font-size: 24px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        p {
+            text-align: center;
+        }
+        a {
+            text-decoration: none;
+            color: #2c3e50;
+        }
+        a:hover {
+            color: #2980b9;
+            transition: .6s;
+        }
+    </style>
+</head>
+<%- include('components/header', {username: username}) %>
+<body>
+    <h1 id="contact">Contact</h1>
+    <p>Phone: 1234567890</p>
+    <p>Email:
+        <a href="mailto: exampleEmail.com">exampleEmail.com</a>
+    </p>
+    <p>Address: 123, Example Street, Example City, 12345</p>
+    <script src="/todo.js"></script>
+</body>
+</html>

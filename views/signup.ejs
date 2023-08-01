@@ -67,7 +67,7 @@
             <input type="email" name="email" placeholder="Email" id="email" required="required" />
             <input type="text" name="username" placeholder="Username" id="username" required="required" />
             <input type="password" name="password" placeholder="Password" id="password" required="required" />
-            <%if(error){%>
+            <%if(error!=''){%>
                 <p style="color: red;"><%=error%></p>
             <%}%>
             <button type="submit">Sign Up.</button>
