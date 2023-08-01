@@ -3,26 +3,29 @@ var input = document.getElementById('input');
 var header = document.querySelector('header');
 var logout = document.getElementById('logout');
 
-submit.addEventListener('click', function() {
-    if(input.value != '') {
-        let todoContent = input.value;
-        fetch('/todo', {
-            method: 'post',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({todoContent})
-        }).then(function(response) {
-            if(response.ok) {
-                input.value = '';
-                location.reload();
-            } else {
-                throw new Error(response.message);
-            }
-        });
-    }
-});
+if(submit) {
+    submit.addEventListener('click', function() {
+        if(input.value != '') {
+            let todoContent = input.value;
+            fetch('/todo', {
+                method: 'post',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({todoContent})
+            }).then(function(response) {
+                if(response.ok) {
+                    input.value = '';
+                    location.reload();
+                } else {
+                    throw new Error(response.message);
+                }
+            });
+        }
+    });
+}
 
+if(logout){
 logout.addEventListener('click', function() {
     fetch('/logout', {
         method: 'get'
@@ -34,6 +37,7 @@ logout.addEventListener('click', function() {
         }
     });
 });
+}
 
 
 function updateTodoById(todoId, todoCompleted, callback){
