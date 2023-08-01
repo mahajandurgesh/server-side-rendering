@@ -15,7 +15,13 @@ app.use(session({
 
 app.get('/', function(req, res) {
     if(req.session.username) {
-        res.render('index', {username: req.session.username});
+        readTodosFromFile(function(err, todos) {
+            if(err) {
+                res.status(500).send('Error reading file');
+            } else {
+                res.render('index', {username: req.session.username, todos: todos});
+            }
+        });
     } else {
         res.render('login');
     }

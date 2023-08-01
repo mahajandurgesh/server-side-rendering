@@ -7,11 +7,11 @@
     <title>Todo App</title>
 </head>
 <body>
-    <%- include('header') %>
+    <%- include('components/header', {username: username}) %>
     <div class="container">
         <div class="left">
             <h2>Todo List</h2>
-            <ul id="todo-list"></ul>
+            <%- include('components/data', {todos: todos}) %>
         </div>
         <div class="right">
             <h2>Add Todo</h2>

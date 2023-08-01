@@ -1,0 +1,14 @@
+<ul id="todo-list">
+    <% for(let i = 0; i < todos.length; i++) { %>
+        <% let className = todos[i].todoCompleted ? "todo-content-completed" : "todo-content-incomplete" %>
+        <li class="todo-item">
+            <div class=<%=className%>>
+                <%=todos[i].todoContent%>
+            </div>
+            <div class="todo-actions">
+                <input type="checkbox" <%= todos[i].todoCompleted ? "checked" : "" %> value=<%=i;%> onclick="checkboxChangeHandler(this);" >
+                <button class="delete-todo" value=<%=i%> onclick="deleteClickHandler(this);">Delete</button>
+            </div>
+        </li>
+    <% } %>
+</ul>
